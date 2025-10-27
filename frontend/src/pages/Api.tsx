@@ -10,41 +10,39 @@ const Api = memo(() => {
       {/* Header */}
       <div className="mb-16 text-center">
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-300">
-            API
-          </span>{" "}
+          <span className="acv-heading">API</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
             Documentation
           </span>
         </h1>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p className="text-xl acv-text-muted max-w-3xl mx-auto">
           Integrate OptimalCV's AI-powered CV generation into your applications
         </p>
       </div>
 
       {/* Getting Started */}
-      <Card className="mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
-        <h2 className="text-3xl font-bold text-white mb-4">Getting Started</h2>
-        <p className="text-gray-400 mb-6 leading-relaxed">
+      <Card className="mb-8">
+        <h2 className="text-3xl font-bold acv-heading mb-4">Getting Started</h2>
+        <p className="acv-text-muted mb-6 leading-relaxed">
           The OptimalCV API allows you to generate tailored CVs
           programmatically. All requests are made to the base URL and require
           proper authentication.
         </p>
-        <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5">
+        <div className="acv-code-bg rounded-xl p-6 border">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wide">
               Base URL
             </span>
           </div>
-          <code className="block text-sm md:text-base text-gray-300 font-mono break-all">
+          <code className="block text-sm md:text-base acv-text-muted font-mono break-all">
             {baseUrl}/api
           </code>
         </div>
       </Card>
 
       {/* Generate CV Endpoint */}
-      <Card className="mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
-        <h2 className="text-3xl font-bold text-white mb-6">
+      <Card className="mb-8">
+        <h2 className="text-3xl font-bold acv-heading mb-6">
           Generate CV as PDF
         </h2>
 
@@ -52,10 +50,10 @@ const Api = memo(() => {
           <span className="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase">
             POST
           </span>
-          <code className="text-sm text-gray-300 font-mono">/generate</code>
+          <code className="text-sm acv-text-muted font-mono">/generate</code>
         </div>
 
-        <p className="text-gray-400 mb-8 leading-relaxed">
+        <p className="acv-text-muted mb-8 leading-relaxed">
           Generate a tailored CV as a professional PDF based on a job
           description and user profile. The CV is generated using AI, converted
           to LaTeX, and compiled to PDF.
@@ -63,15 +61,15 @@ const Api = memo(() => {
 
         {/* Request Body */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-white mb-4">
+          <h3 className="text-xl font-semibold acv-heading mb-4">
             Request Body
-            <span className="ml-3 text-sm font-normal text-gray-400">
+            <span className="ml-3 text-sm font-normal acv-text-muted">
               (multipart/form-data)
             </span>
           </h3>
 
-          <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5 mb-6">
-            <pre className="text-sm text-gray-300 font-mono overflow-x-auto">
+          <div className="acv-code-bg rounded-xl p-6 border mb-6">
+            <pre className="text-sm acv-text-muted font-mono overflow-x-auto">
               <code>{`FormData fields:
   jobUrl: string (optional)
   jobDescription: string (optional)
@@ -101,12 +99,12 @@ const Api = memo(() => {
             ].map((param, i) => (
               <div
                 key={i}
-                className="flex gap-4 p-4 rounded-lg bg-white/5 border border-white/5"
+                className="flex gap-4 p-4 rounded-lg acv-param-bg border"
               >
                 <code className="text-sm font-semibold text-indigo-400 flex-shrink-0">
                   {param.name}
                 </code>
-                <span className="text-sm text-gray-400">{param.desc}</span>
+                <span className="text-sm acv-text-muted">{param.desc}</span>
               </div>
             ))}
           </div>
@@ -114,9 +112,9 @@ const Api = memo(() => {
 
         {/* Response */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-white mb-4">Response</h3>
-          <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5">
-            <pre className="text-sm text-gray-300 font-mono overflow-x-auto">
+          <h3 className="text-xl font-semibold acv-heading mb-4">Response</h3>
+          <div className="acv-code-bg rounded-xl p-6 border">
+            <pre className="text-sm acv-text-muted font-mono overflow-x-auto">
               <code>{`Content-Type: application/pdf
 Content-Disposition: attachment; filename=cv_[job_title].pdf
 
@@ -128,15 +126,15 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
 
       {/* Example Request */}
       <Card className="mb-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-2 border-indigo-500/20 backdrop-blur-sm">
-        <h2 className="text-3xl font-bold text-white mb-6">Example Request</h2>
+        <h2 className="text-3xl font-bold acv-heading mb-6">Example Request</h2>
 
-        <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5">
+        <div className="acv-code-bg rounded-xl p-6 border">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wide">
               cURL
             </span>
           </div>
-          <pre className="text-xs md:text-sm text-gray-300 font-mono overflow-x-auto">
+          <pre className="text-xs md:text-sm acv-text-muted font-mono overflow-x-auto">
             <code>{`curl -X POST ${baseUrl}/api/generate \\
   -F "jobDescription=Senior React Developer with 5+ years..." \\
   -F "userMarkdown=# John Doe\\n## Experience..." \\
@@ -144,7 +142,7 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
           </pre>
         </div>
 
-        <p className="text-sm text-gray-400 mt-4">
+        <p className="text-sm acv-text-muted mt-4">
           💡 The response will be a PDF file that can be saved directly with the{" "}
           <code className="text-indigo-400 px-1.5 py-0.5 bg-indigo-500/10 rounded">
             -o
@@ -154,8 +152,8 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
       </Card>
 
       {/* Health Check Endpoints */}
-      <Card className="mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
-        <h2 className="text-3xl font-bold text-white mb-6">
+      <Card className="mb-8">
+        <h2 className="text-3xl font-bold acv-heading mb-6">
           Health Check Endpoints
         </h2>
 
@@ -166,13 +164,13 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
               <span className="px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-400 text-xs font-bold uppercase">
                 GET
               </span>
-              <code className="text-sm text-gray-300 font-mono">/health</code>
+              <code className="text-sm acv-text-muted font-mono">/health</code>
             </div>
-            <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+            <p className="acv-text-muted mb-4 text-sm leading-relaxed">
               Check if the API is running and healthy.
             </p>
-            <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5">
-              <pre className="text-sm text-gray-300 font-mono">
+            <div className="acv-code-bg rounded-xl p-6 border">
+              <pre className="text-sm acv-text-muted font-mono">
                 <code>{`{
   "ok": true
 }`}</code>
@@ -186,15 +184,15 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
               <span className="px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-400 text-xs font-bold uppercase">
                 GET
               </span>
-              <code className="text-sm text-gray-300 font-mono">
+              <code className="text-sm acv-text-muted font-mono">
                 /health/latex
               </code>
             </div>
-            <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+            <p className="acv-text-muted mb-4 text-sm leading-relaxed">
               Check LaTeX installation status (required for PDF generation).
             </p>
-            <div className="bg-gray-900/50 rounded-xl p-6 border border-white/5">
-              <pre className="text-sm text-gray-300 font-mono">
+            <div className="acv-code-bg rounded-xl p-6 border">
+              <pre className="text-sm acv-text-muted font-mono">
                 <code>{`{
   "installed": true,
   "version": "pdfTeX 3.14159265...",
@@ -207,9 +205,9 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
       </Card>
 
       {/* Error Responses */}
-      <Card className="mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
-        <h2 className="text-3xl font-bold text-white mb-6">Error Responses</h2>
-        <p className="text-gray-400 mb-8 leading-relaxed">
+      <Card className="mb-8">
+        <h2 className="text-3xl font-bold acv-heading mb-6">Error Responses</h2>
+        <p className="acv-text-muted mb-8 leading-relaxed">
           The API returns standard HTTP status codes. Error responses include a
           message field with details.
         </p>
@@ -229,19 +227,16 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
               color: "red",
             },
           ].map((error, i) => (
-            <div
-              key={i}
-              className="p-5 rounded-xl bg-white/5 border border-white/5"
-            >
+            <div key={i} className="p-5 rounded-xl acv-param-bg border">
               <div className="flex items-center gap-3 mb-2">
                 <span
                   className={`px-3 py-1.5 rounded-lg bg-${error.color}-500/20 text-${error.color}-400 text-xs font-bold`}
                 >
                   {error.code}
                 </span>
-                <span className="font-semibold text-white">{error.title}</span>
+                <span className="font-semibold acv-heading">{error.title}</span>
               </div>
-              <p className="text-sm text-gray-400 ml-16">{error.desc}</p>
+              <p className="text-sm acv-text-muted ml-16">{error.desc}</p>
             </div>
           ))}
         </div>
@@ -254,8 +249,8 @@ Content-Disposition: attachment; filename=cv_[job_title].pdf
             <FiSend className="w-7 h-7 text-white" />
           </div>
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-white mb-3">Need Help?</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <h3 className="text-2xl font-bold acv-heading mb-3">Need Help?</h3>
+            <p className="acv-text-muted mb-6 leading-relaxed">
               Have questions about the API? Check out our GitHub repository or
               reach out to our community.
             </p>
