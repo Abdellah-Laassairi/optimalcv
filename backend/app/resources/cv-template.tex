@@ -1,0 +1,232 @@
+
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\usepackage[left=0.4 in,top=0.4in,right=0.4 in,bottom=0.4in]{geometry} % Document margins
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{#2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://github.com/Abdellah-Laassairi}{\Large LAASSAIRI Abdellah}} &  \href{mailto:laassairi.abdellah@gmail.com}{laassairi.abdellah@gmail.com}\\
+  \href{https://abdellah-laassairi.github.io/blog/}{https://github.com/Abdellah-Laassairi} & +(33) 751019155 $\diamondsuit$ Lyon, France\\
+\end{tabular*}
+
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Ecole Centrale de Nantes}{Nantes, France}
+      {Engineering degree in Applied Mathematics. }{Aug. 2021 -- Dec. 2023}
+    \resumeSubheading
+      {Mohammed VI International Academy of Civil Aviation}{Casablanca, Morocco}
+      {Engineering degree in Computer Science. }{Aug. 2019 -- July. 2023}
+    \resumeSubheading
+      {Preparatory Classes : Mathematics and Physics (MP)}{Laayoune, Morocco}
+      {Intensive undergraduate program in Pure Mathematics, Physics and Computer Science.}{Aug. 2019 -- July. 2021}
+  \resumeSubHeadingListEnd
+
+
+
+%-----------EXPERIENCE-----------------
+\section{Experience }
+  \resumeSubHeadingListStart
+
+
+    \resumeSubheading
+      {Oris Materials Intelligence}{Lyon, France}{Data scientist}{Oct. 2023 -- Present}
+      \resumeItemListStart
+                \resumeItem{}{Put in place core best practices for Data Team and established main services and infrastructure pipelines. }
+          \resumeItem{}{Spearheaded the development and industrialization of scalable AI pipelines using AWS services. }
+          \resumeItem{}{Trained, fine-tuned and deployed deep learning models for the detection of construction sites using satellite imagery. }
+       \resumeItem{}{Developed and deployed automatic report generation microservice, cutting processing time from weeks to seconds.}
+             \resumeItem{Tech}{: AWS CDK, Langchain, Kubernetes, Pytorch, ONNX, Docker, Docker-compose. }
+
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Telespazio}{Bordeaux, France}{Deep learning internship}{Apr. 2023 -- Sept 2023}
+      \resumeItemListStart
+          \resumeItem{}{Developed and implemented custom transfer learning techniques by leveraging large LinkNet models, achieving a  $\boldsymbol{\times 17}$  speedup while maintaining accuracy. }
+        \resumeItem{}{Successfully applied knowledge distillation training pipelines on semantic segmentation models, resulting in a  $\boldsymbol{\times 40}$  speed improvement,  $\boldsymbol{3\%}$  F1 score gain, and  $\boldsymbol{\times 52}$  reduction in model size.}
+
+            \begin{comment}
+        \resumeItem{}
+
+         {Utilized DeepSpeed Zero Redundancy Optimizer and dataset caching, leading to a $\boldsymbol{\times 5}$ increase in training speed.}
+         \resumeItem{Tech}{: Pytorch, Pytorch-lightning, ONNX, ClearML, QGIS.}
+              \end{comment}
+
+
+          \resumeItemListEnd
+
+
+    \resumeSubheading
+      {Enlaps}{Grenoble, France}
+      {Deep learning internship}{Feb. 2022 -- Aug 2022}
+      \resumeItemListStart
+        \resumeItem{}
+          {Created a docker image for neural network accelerations and framework conversions according to hardware specifications with \textbf{0\%} loss in precision.}
+        \resumeItem{}
+         {Achieved $\boldsymbol{\times 10}$ preprocessing pipelines speedup using PyTorch and Pyvips. $\boldsymbol{\times 3}$ for classification models \\ on AWS Lambdas. $\boldsymbol{\times 7}$ for object detection models on T4 GPU (g4dn.xlarge instance). }
+
+         \begin{comment}
+
+         \resumeItem{}
+          {Augmentation de \textbf{8\%}  du score mAP des modèles de détection d'objets en mettant en œuvre WBF-NMS et en optimisant le prétraitement des entrées..}
+
+          \resumeItem{}
+          {Acceleration of classification models by \textbf{3X} on CPU en utilisant la fusion des couches et l'optimisation des graphes.}
+         \end{comment}
+
+        \resumeItem{}
+          {Spearheaded the replacement of AI inference and deployment pipelines with Triton Inference Server, resulting in a $\boldsymbol{\times 27}$ performance acceleration and \textbf{200K \$} annual cost savings. }
+     \resumeItem{Tech}{: Tensorflow, Pytorch, Triton, ONNX, AWS EC2/Lambdas, Docker, Docker-compose.}
+
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projets}
+  \resumeSubHeadingListStart
+
+
+    \resumeSubheading
+      {Generali: House form complexity in relation to RGA damages}{www.generali.fr}
+     {Utilized a polygonal measure of complexity and feature selection on a 22 million instances dataset. } {Oct. 2022 -- Apr. 2023}
+
+    \resumeSubheading
+      {LS2N DUKe: Multi-Task Bayesian Networks Framework}{www.ls2n.fr}{Optimisation of bayesian networks structure learning by 30\% using caching.}{Oct. 2022 -- Present}
+
+    \resumeSubheading
+      {Institut Louis Bachelier:  Real estate price prediction }{challengedata.ens.fr}{Implementation of CLIP ViT, Boosted tress, and Gaussian Processes. 3rd place. }{Oct. 2022 -- Present}
+
+
+    \begin{comment}
+
+    \resumeSubheading
+      {Openpale: Climate change forecasting platform}{www.openpale.com}{Training and deployment of a U-Net segmentation model on satellite images.}{Sept. 2022 -- Nov. 2022}
+
+
+    \resumeSubheading
+      {Omnisat: Monitoring and prediction of satellite collisions}{www.omnisat.com}{Satellite orbit prediction and space debris risk detection.}{Sept. 2020 -- Nov. 2021}
+
+    \end{comment}
+
+  \resumeSubHeadingListEnd
+
+
+%-----------EXTRA-----------------
+
+          \begin{comment}
+\section{Extracurricular activities}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+    {SGAC: Space Generation Advisory Council}{London, UK}
+      {Open Cosmos Academy Ambassador}{Oct. 2021 -- Present}
+      \resumeItemListStart
+        \resumeItem{ }
+          {Led workshops and organized space mission design and rocket launch simulations.}
+
+      \resumeItemListEnd
+
+     \resumeSubHeadingListEnd
+    \end{comment}
+%--------PROGRAMMING SKILLS------------
+\section{Skills}
+ \resumeSubHeadingListStart
+   \item{
+     \textbf{Programming languages}{: Python, R, C, C++, PL/SQL, Java.}
+   }
+   \item{
+     \textbf{Frameworks and tools}{: AWS, Tensorflow, Tensorrt, Scikit-learn, Pytorch, OpenVino, Git, Docker.}
+     }
+ \resumeSubHeadingListEnd
+
+%
+%--------Languages------------
+\section{Languages}
+ \resumeSubHeadingListStart
+   \item{
+     \textbf{English}{ (Fluent) } \textbf{French}{ (Bilingual) } \textbf{Arabic}{ (Bilingual) }
+   }
+ \resumeSubHeadingListEnd
+%--------AWARDS SECTION------------
+\section{AWARDS}
+ \resumeSubHeadingListStart
+    \resumeSubItem{1st place in Nasa Space Apps Hackathon Morocco 2022}{}
+    \resumeSubItem{1st place Arab IoT \& AI Hackathon 2021}{}
+ \resumeSubHeadingListEnd
+%-------------------------------------------
+\end{document}

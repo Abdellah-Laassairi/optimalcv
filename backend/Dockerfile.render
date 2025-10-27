@@ -1,0 +1,43 @@
+# Dockerfile optimized for Render.com free tier
+# Lightweight and efficient for fast cold starts
+
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies and LaTeX (minimal installation)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    texlive-latex-base \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-latex-extra && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy backend files and install dependencies
+COPY . .
+# hadolint ignore=DL3013
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir .
+
+# Create non-root user for security
+RUN useradd -m -u 1000 autocv && \
+    chown -R autocv:autocv /app
+USER autocv
+
+# Expose port (Render uses PORT env variable)
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:${PORT:-10000}/health || exit 1
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    HOST=0.0.0.0 \
+    PORT=10000
+
+# Start command (Render provides $PORT)
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

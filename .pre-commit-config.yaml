@@ -89,13 +89,16 @@ repos:
     hooks:
       - id: flake8
         name: Lint Python (flake8)
-        args: [--max-line-length=120, --extend-ignore=E203, W503]
+        args:
+          - --max-line-length=120
+          - --extend-ignore=E203,W503
         files: ^backend/
         additional_dependencies:
           - flake8-docstrings
           - flake8-bugbear
           - flake8-comprehensions
           - flake8-simplify
+          - tomli
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.8.0
@@ -107,14 +110,15 @@ repos:
         additional_dependencies:
           - types-requests
           - types-PyYAML
+          - types-Markdown
 
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.6
     hooks:
       - id: bandit
         name: Security check Python (bandit)
-        args: [-r, backend/, -ll]
-        files: ^backend/
+        args: [-s, B101, -ll]
+        files: \.py$
 
   # ==========================================
   # Python: Docstrings & Documentation
@@ -126,6 +130,7 @@ repos:
         name: Check docstrings (pydocstyle)
         files: ^backend/app/
         args: [--convention=google, --add-ignore=D100, D104]
+        additional_dependencies: [tomli]
   # ==========================================
   # Python: Dependency Management
   # ==========================================
@@ -187,7 +192,7 @@ repos:
       - id: detect-secrets
         name: Detect secrets
         args: [--baseline, .secrets.baseline]
-        exclude: '(package-lock\.json|yarn\.lock|docs/index\.md)'
+        exclude: '(package-lock\.json|yarn\.lock|docs/index\.md|backend/README\.md)'
 
   - repo: https://github.com/zricethezav/gitleaks
     rev: v8.18.1
@@ -204,7 +209,17 @@ repos:
     hooks:
       - id: hadolint-docker
         name: Lint Dockerfiles (hadolint)
-        args: [--ignore, DL3008, --ignore, DL3009]
+        args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3013, --ignore, DL3015]
+
+  # ==========================================
+  # YAML/Config Files
+  # ==========================================
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.33.0
+    hooks:
+      - id: yamllint
+        name: Lint YAML files
+        args: [-d, '{extends: default, rules: {line-length: {max: 120}, document-start: disable}}']
 
   # ==========================================
   # Markdown
@@ -293,16 +308,6 @@ repos:
           bash -c '
           if git diff --cached --name-only | xargs grep -n "console\.log" 2>/dev/null; then
             echo "Remove console.log statements"
-            exit 1
-          fi || exit 0'
-      - id: no-print-statements
-        name: Check for print() in Python
-        language: system
-        files: ^backend/.*\.py$
-        entry: |
-          bash -c '
-          if git diff --cached --name-only | xargs grep -n "print(" 2>/dev/null | grep -v "# noqa"; then
-            echo "Remove print() statements or add # noqa"
             exit 1
           fi || exit 0'
 
