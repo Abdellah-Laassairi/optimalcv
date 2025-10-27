@@ -16,8 +16,8 @@ echo -e "${BLUE}========================================${NC}"
 echo ""
 
 # Check if we're in the backend directory
-if [ ! -f "app/main.py" ]; then
-  echo -e "${RED}Error: app/main.py not found${NC}"
+if [ ! -f "optimalcv/main.py" ]; then
+  echo -e "${RED}Error: optimalcv/main.py not found${NC}"
   echo -e "${RED}Please run this script from the backend directory${NC}"
   exit 1
 fi
@@ -61,7 +61,7 @@ echo -e "${YELLOW}Press Ctrl+C to stop the server${NC}"
 echo ""
 
 # Run the server
-cd app
+cd optimalcv
 echo -e "${GREEN}Starting backend server...${NC}"
 echo "Access the API documentation at http://localhost:8000/docs"
 
@@ -70,4 +70,4 @@ export PYTHONPATH
 PYTHONPATH="${PWD}:${PYTHONPATH}"
 
 # Start server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn optimalcv.main:app --reload --host 0.0.0.0 --port 8000
