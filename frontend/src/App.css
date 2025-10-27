@@ -1,0 +1,112 @@
+/* OptimalCV - Additional styles for markdown preview */
+.acv-preview {
+  color: var(--acv-text);
+  line-height: 1.75;
+}
+
+.acv-preview h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  color: var(--acv-text);
+  letter-spacing: -0.025em;
+}
+
+.acv-preview h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  color: var(--acv-text);
+  letter-spacing: -0.0125em;
+}
+
+.acv-preview h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+  color: var(--acv-text);
+}
+
+.acv-preview p {
+  margin-bottom: 1rem;
+  color: var(--acv-text-muted);
+}
+
+.acv-preview ul,
+.acv-preview ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  color: var(--acv-text-muted);
+}
+
+.acv-preview li {
+  margin-bottom: 0.375rem;
+}
+
+.acv-preview strong {
+  font-weight: 600;
+  color: var(--acv-text);
+}
+
+.acv-preview code {
+  background: rgba(99, 102, 241, 0.15);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, "Courier New", monospace;
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+html.light-mode .acv-preview code {
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(79, 70, 229);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.acv-preview a {
+  color: #60a5fa;
+  text-decoration: underline;
+  transition: color 150ms;
+}
+
+.acv-preview a:hover {
+  color: #93c5fd;
+}
+
+html.light-mode .acv-preview a {
+  color: rgb(14, 165, 233);
+}
+
+html.light-mode .acv-preview a:hover {
+  color: rgb(2, 132, 199);
+}
+
+/* Print-specific preview styles */
+@media print {
+  .acv-preview h1 {
+    color: #000 !important;
+  }
+  .acv-preview h2 {
+    color: #111 !important;
+  }
+  .acv-preview h3 {
+    color: #222 !important;
+  }
+  .acv-preview p,
+  .acv-preview li,
+  .acv-preview strong {
+    color: #000 !important;
+  }
+  .acv-preview code {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+  }
+  .acv-preview a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+}
