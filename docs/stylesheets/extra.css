@@ -1,0 +1,106 @@
+/* Custom styles for AutoCV Documentation */
+
+/* Better code blocks */
+.md-typeset code {
+    background-color: var(--md-code-bg-color);
+    color: var(--md-code-fg-color);
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.3rem;
+}
+
+/* Card grid for features */
+.grid.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.grid.cards > * {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.grid.cards > *:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Better admonitions */
+.md-typeset .admonition {
+    border-left: 4px solid;
+    border-radius: 0.2rem;
+}
+
+/* Centered content */
+.md-content__inner > div[align="center"] {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+/* Better tables */
+.md-typeset table:not([class]) {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.2rem;
+}
+
+.md-typeset table:not([class]) th {
+    background-color: var(--md-code-bg-color);
+    font-weight: bold;
+}
+
+/* Mermaid diagrams */
+.mermaid {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+/* Better code copy button */
+.md-clipboard {
+    color: var(--md-default-fg-color--light);
+}
+
+/* Responsive images */
+.md-typeset img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.2rem;
+}
+
+/* Better spacing for lists */
+.md-typeset ul li,
+.md-typeset ol li {
+    margin-bottom: 0.5rem;
+}
+
+/* Highlight important notes */
+.md-typeset .admonition.tip {
+    border-left-color: #00c853;
+}
+
+.md-typeset .admonition.warning {
+    border-left-color: #ff9100;
+}
+
+.md-typeset .admonition.danger {
+    border-left-color: #ff1744;
+}
+
+/* Better button styling */
+.md-button {
+    margin: 0.5rem 0.25rem;
+}
+
+/* Code tabs */
+.tabbed-set {
+    margin: 1rem 0;
+}
+
+/* Search highlighting */
+.search-result mark {
+    background-color: rgba(255, 235, 59, 0.5);
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.1rem;
+}

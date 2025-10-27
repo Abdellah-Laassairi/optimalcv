@@ -1,0 +1,104 @@
+# Git attributes for AutoCV
+
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Shell scripts
+*.sh text eol=lf
+
+# Python
+*.py text eol=lf diff=python
+*.pyi text eol=lf diff=python
+
+# Web
+*.html text eol=lf diff=html
+*.css text eol=lf diff=css
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+*.rst text eol=lf
+
+# Configuration
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.cfg text eol=lf
+*.conf text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+
+# Docker
+Dockerfile* text eol=lf
+*.dockerignore text eol=lf
+docker-compose*.yml text eol=lf
+
+# LaTeX
+*.tex text eol=lf diff=tex
+*.bib text eol=lf
+
+# Binary files
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.7z binary
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.avi binary
+
+# Archives
+*.7z binary
+*.gz binary
+*.jar binary
+*.rar binary
+*.tar binary
+*.zip binary
+
+# Python compiled
+*.pyc binary
+*.pyo binary
+*.pyd binary
+
+# Node modules (should be in .gitignore but just in case)
+node_modules/** binary
+
+# Diff settings
+*.pdf diff=pdf
+*.png diff=exif
+*.jpg diff=exif
+*.jpeg diff=exif
+
+# Language-specific diff patterns
+*.py diff=python
+*.js diff=javascript
+*.ts diff=typescript
+*.json diff=json
+*.md diff=markdown
+*.yaml diff=yaml
+*.yml diff=yaml
+
+# Merge strategies
+*.json merge=union
+package-lock.json merge=ours
+yarn.lock merge=ours
