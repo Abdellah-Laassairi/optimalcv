@@ -1,0 +1,26 @@
+# AI Prompts Configuration for AutoCV
+
+# Chain-of-Thought CV Generation with Multiple Stages
+# Stage 1: Content Generation - Focus on relevance and impact
+# Stage 2: HR Professional Review - Ensure conciseness and best practices
+# Stage 3: Final Verification - Check for errors and LaTeX validity
+
+# Stage 1: Initial CV Content Generation
+cv_content_generation_prompt: >
+  Create a targeted, ATS-friendly CV in plain text or markdown format optimized for the job posting.
+  The CV should be professional, concise, and highlight the candidate's skills and experience
+  relevant to the job. Use the STAR method for experience bullet points with quantified achievements.
+  - Job Title: {job_title}
+  - Job Description: {job_description}
+  - Candidate's Background: {user_description}
+
+# Stage 2: HR Professional Review and Refinement
+cv_hr_review_prompt: >
+  Review the following CV draft. Refine it to be more professional, concise, and impactful.
+  Ensure it follows HR best practices and is ready for LaTeX conversion.
+  - CV Draft: {cv_text}
+
+# Stage 3: Final Verification and LaTeX Generation
+cv_system_prompt: >
+  You are an expert career coach and CV writer. Output only valid LaTeX code for a
+  complete CV document. Ensure all special characters are properly escaped.
