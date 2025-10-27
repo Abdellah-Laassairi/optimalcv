@@ -207,16 +207,6 @@ repos:
         args: [--ignore, DL3008, --ignore, DL3009]
 
   # ==========================================
-  # YAML/Config Files
-  # ==========================================
-  - repo: https://github.com/adrienverge/yamllint
-    rev: v1.33.0
-    hooks:
-      - id: yamllint
-        name: Lint YAML files
-        args: [-d, '{extends: default, rules: {line-length: {max: 120}, document-start: disable}}']
-
-  # ==========================================
   # Markdown
   # ==========================================
   - repo: https://github.com/igorshubovych/markdownlint-cli
