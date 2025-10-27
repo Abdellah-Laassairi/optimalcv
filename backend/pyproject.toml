@@ -95,21 +95,21 @@ optimalcv = "app.main:cli"
 optimalcv-server = "app.main:run_server"
 
 [tool.hatch.build.targets.wheel]
-packages = ["app"]
+packages = ["optimalcv"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"app/resources" = "app/resources"
+"optimalcv/resources" = "optimalcv/resources"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/app",
+    "/optimalcv",
     "/requirements.txt",
     "/README.md",
     "/LICENSE",
 ]
 
 [tool.hatch.version]
-path = "app/__init__.py"
+path = "optimalcv/__init__.py"
 
 [tool.hatch.metadata]
 allow-direct-references = true
