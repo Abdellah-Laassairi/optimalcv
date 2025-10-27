@@ -22,7 +22,8 @@ Get your OptimalCV instance running in minutes on Render's free tier!
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
-**[📖 Render Deployment Guide](docs/deployment/render-detailed.md)** | **[💰 $0/month on free tier!](docs/deployment/render-detailed.md#-cost-optimization)**
+**[📖 Render Deployment Guide](docs/deployment/render-detailed.md)** | **[💰 $0/month on free tier!](docs/deployment/render-detailed.md#-cost-optimization)**  
+**[🚀 Vercel Deployment](VERCEL_DEPLOYMENT.md)** | **[Deploy Frontend to Vercel + Backend to Render](VERCEL_DEPLOYMENT.md)**
 
 </div>
 
@@ -63,6 +64,7 @@ Get your OptimalCV instance running in minutes on Render's free tier!
 - Pip-installable Python package
 - Docker support
 - Comprehensive configuration options
+- One-click deploy to Render or Vercel
 
 ---
 
@@ -199,13 +201,12 @@ job = JobInfo(
     title="Software Engineer",
     company="Tech Corp",
     description="Looking for a skilled developer...",
-    requirements=["Python", "FastAPI", "React"]
+    requirements=["Python", "FastAPI", "React"],
 )
 
 # Generate LaTeX CV
 latex_cv = generate_cv_latex(
-    user_description="Your professional background...",
-    job=job
+    user_description="Your professional background...", job=job
 )
 
 # Generate PDF
@@ -233,7 +234,7 @@ curl -X POST "http://localhost:8000/api/settings" \
   -d '{
     "provider": "openai",
     "model": "gpt-4o-mini",
-    "api_key": "sk-...",
+    "api_key": "sk-...", # pragma: allowlist secret
     "temperature": 0.4,
     "max_tokens": 4000
   }'
@@ -400,4 +401,3 @@ Made with ❤️ by the OptimalCV Team
 **[⬆ back to top](#optimalcv---ai-powered-cv-generator)**
 
 </div>
-
