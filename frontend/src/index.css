@@ -262,6 +262,28 @@ html.light-mode body::after {
     border-color: rgb(229, 231, 235);
   }
 
+  /* Code Block Background */
+  .acv-code-bg {
+    background: rgba(17, 24, 39, 0.5);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  html.light-mode .acv-code-bg {
+    background: rgba(249, 250, 251, 0.5);
+    border-color: rgb(229, 231, 235);
+  }
+
+  /* Parameter/Field Background */
+  .acv-param-bg {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  html.light-mode .acv-param-bg {
+    background: rgb(249, 250, 251);
+    border-color: rgb(229, 231, 235);
+  }
+
   /* App Background */
   .acv-app-bg {
     background: linear-gradient(
