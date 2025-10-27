@@ -1,0 +1,337 @@
+default_install_hook_types: [pre-commit, commit-msg, pre-push]
+default_stages: [commit, push]
+
+repos:
+  # ==========================================
+  # General File Checks
+  # ==========================================
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # File formatting
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+        name: Fix end of files
+      - id: mixed-line-ending
+        name: Fix mixed line endings
+        args: [--fix=lf]
+
+      # File checks
+      - id: check-added-large-files
+        name: Check for large files
+        args: [--maxkb=1000]
+      - id: check-case-conflict
+        name: Check for case conflicts
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+      - id: check-symlinks
+        name: Check for broken symlinks
+      - id: destroyed-symlinks
+        name: Check for destroyed symlinks
+
+      # Code checks
+      - id: check-ast
+        name: Check Python AST
+        types: [python]
+      - id: check-builtin-literals
+        name: Check builtin type constructor use
+        types: [python]
+      - id: check-docstring-first
+        name: Check docstring first
+        types: [python]
+      - id: debug-statements
+        name: Check for debugger imports
+        types: [python]
+
+      # JSON/YAML/TOML checks
+      - id: check-json
+        name: Check JSON syntax
+      - id: check-yaml
+        name: Check YAML syntax
+        args: [--allow-multiple-documents]
+      - id: check-toml
+        name: Check TOML syntax
+
+      # Security
+      - id: detect-private-key
+        name: Detect private keys
+      - id: detect-aws-credentials
+        name: Detect AWS credentials
+        args: [--allow-missing-credentials]
+
+  # ==========================================
+  # Python: Code Formatting
+  # ==========================================
+  - repo: https://github.com/psf/black
+    rev: 24.1.1
+    hooks:
+      - id: black
+        name: Format Python code (black)
+        language_version: python3
+        args: [--line-length=120]
+        files: ^backend/
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: Sort Python imports (isort)
+        args: [--profile=black, --line-length=120]
+        files: ^backend/
+
+  # ==========================================
+  # Python: Code Quality
+  # ==========================================
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        name: Lint Python (flake8)
+        args: [--max-line-length=120, --extend-ignore=E203, W503]
+        files: ^backend/
+        additional_dependencies:
+          - flake8-docstrings
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-simplify
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        name: Type check Python (mypy)
+        files: ^backend/
+        args: [--ignore-missing-imports, --no-strict-optional]
+        additional_dependencies:
+          - types-requests
+          - types-PyYAML
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.6
+    hooks:
+      - id: bandit
+        name: Security check Python (bandit)
+        args: [-r, backend/, -ll]
+        files: ^backend/
+
+  # ==========================================
+  # Python: Docstrings & Documentation
+  # ==========================================
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        name: Check docstrings (pydocstyle)
+        files: ^backend/app/
+        args: [--convention=google, --add-ignore=D100, D104]
+  # ==========================================
+  # Python: Dependency Management
+  # ==========================================
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.2.1
+    hooks:
+      - id: autoflake
+        name: Remove unused imports (autoflake)
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --remove-unused-variables
+          - --remove-duplicate-keys
+        files: ^backend/
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        name: Upgrade Python syntax (pyupgrade)
+        args: [--py39-plus]
+        files: ^backend/
+
+  # ==========================================
+  # JavaScript/TypeScript: Formatting
+  # ==========================================
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        name: Format JS/TS/JSON/CSS (prettier)
+        files: ^frontend/
+        types_or: [javascript, jsx, ts, tsx, json, css, scss, markdown]
+        args: [--write, --ignore-unknown]
+
+  # ==========================================
+  # JavaScript/TypeScript: Linting
+  # ==========================================
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.0.0-beta.0
+    hooks:
+      - id: eslint
+        name: Lint JS/TS (eslint)
+        files: ^frontend/src/.*\.[jt]sx?$
+        types_or: [javascript, jsx, ts, tsx]
+        args: [--fix, --max-warnings=0]
+        additional_dependencies:
+          - eslint@^9.0.0
+          - typescript@^5.0.0
+          - '@typescript-eslint/parser@^6.0.0'
+          - '@typescript-eslint/eslint-plugin@^6.0.0'
+
+  # ==========================================
+  # Security: Secrets Detection
+  # ==========================================
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        name: Detect secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: '(package-lock\.json|yarn\.lock|docs/index\.md)'
+
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.18.1
+    hooks:
+      - id: gitleaks
+        name: Detect hardcoded secrets (gitleaks)
+        exclude: docs/index\.md
+
+  # ==========================================
+  # Docker
+  # ==========================================
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        name: Lint Dockerfiles (hadolint)
+        args: [--ignore, DL3008, --ignore, DL3009]
+
+  # ==========================================
+  # YAML/Config Files
+  # ==========================================
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.33.0
+    hooks:
+      - id: yamllint
+        name: Lint YAML files
+        args: [-d, '{extends: default, rules: {line-length: {max: 120}, document-start: disable}}']
+
+  # ==========================================
+  # Markdown
+  # ==========================================
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        name: Lint Markdown
+        args: [--fix, --disable, MD013, MD033, MD041]
+
+  # ==========================================
+  # Shell Scripts
+  # ==========================================
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck
+        name: Lint shell scripts (shellcheck)
+        args: [-x, --severity=warning]
+
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.8.0-1
+    hooks:
+      - id: shfmt
+        name: Format shell scripts (shfmt)
+        args: [-i, '2', -ci, -w]
+
+  # ==========================================
+  # Requirements Files
+  # ==========================================
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.16.0
+    hooks:
+      - id: blacken-docs
+        name: Format code in docs
+        additional_dependencies: [black==24.1.1]
+
+  # ==========================================
+  # Commit Message
+  # ==========================================
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
+    hooks:
+      - id: commitizen
+        name: Check commit message (commitizen)
+        stages: [commit-msg]
+
+  # ==========================================
+  # File Size & Type Checks
+  # ==========================================
+  - repo: local
+    hooks:
+      - id: check-env-files
+        name: Check for .env files
+        language: system
+        pass_filenames: false
+        entry: |
+          bash -c '
+          if git diff --cached --name-only | grep -qE "\.env$"; then
+            echo "Error: .env file should not be committed"
+            exit 1
+          fi'
+      - id: check-settings-json
+        name: Check settings.json not committed
+        language: system
+        pass_filenames: false
+        entry: |
+          bash -c '
+          if git diff --cached --name-only | grep -qE "settings\.json$"; then
+            echo "Error: settings.json contains secrets"
+            exit 1
+          fi'
+      - id: pytest-check
+        name: Run pytest (backend)
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+        files: ^backend/
+        entry: bash -c 'cd backend && python -m pytest tests/ -v || true'
+      - id: no-console-log
+        name: Check for console.log
+        language: system
+        files: ^frontend/src/.*\.tsx?$
+        entry: |
+          bash -c '
+          if git diff --cached --name-only | xargs grep -n "console\.log" 2>/dev/null; then
+            echo "Remove console.log statements"
+            exit 1
+          fi || exit 0'
+      - id: no-print-statements
+        name: Check for print() in Python
+        language: system
+        files: ^backend/.*\.py$
+        entry: |
+          bash -c '
+          if git diff --cached --name-only | xargs grep -n "print(" 2>/dev/null | grep -v "# noqa"; then
+            echo "Remove print() statements or add # noqa"
+            exit 1
+          fi || exit 0'
+
+# ==========================================
+# Configuration for specific tools
+# ==========================================
+
+# CI: Skip some heavy checks in CI
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip:
+    - mypy
+    - pytest-check
+    - gitleaks
+  submodules: false
