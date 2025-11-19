@@ -9,7 +9,6 @@ import {
   FiEdit3,
 } from "react-icons/fi";
 import Button from "./Button";
-import Input from "./Input";
 import Card from "./Card";
 import "../settings.css";
 

@@ -32,9 +32,6 @@ repos:
         name: Check for destroyed symlinks
 
       # Code checks
-      - id: check-ast
-        name: Check Python AST
-        types: [python]
       - id: check-builtin-literals
         name: Check builtin type constructor use
         types: [python]

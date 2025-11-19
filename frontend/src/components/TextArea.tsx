@@ -38,7 +38,7 @@ const TextArea = memo(function TextArea({
             id={textareaId}
             className="acv-textarea-field"
             value={value}
-            placeholder=""
+            placeholder={placeholder ?? ""}
             rows={rows}
             maxLength={maxLength}
             onFocus={() => setIsFocused(true)}

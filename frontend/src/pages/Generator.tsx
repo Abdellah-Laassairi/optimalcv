@@ -32,7 +32,6 @@ const Generator = memo(
     setPdfBlob,
     pdfUrl,
     setPdfUrl,
-    showPdfPreview,
     setShowPdfPreview,
   }: GeneratorProps) => {
     const [jobUrl, setJobUrl] = useState("");
