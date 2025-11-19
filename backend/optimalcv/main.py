@@ -1,6 +1,9 @@
 """FastAPI application for AutoCV."""
 
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> 69c9dd2103c51c4951896efb5db51373d90579e7
 from typing import Annotated, Optional
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -18,6 +21,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
+<<<<<<< HEAD
 # Get CORS origins from environment variable
 cors_origins_env = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173")
 cors_origins = [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
@@ -26,6 +30,12 @@ cors_origins = [origin.strip() for origin in cors_origins_env.split(",") if orig
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+=======
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:5173"],
+>>>>>>> 69c9dd2103c51c4951896efb5db51373d90579e7
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
