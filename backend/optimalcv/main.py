@@ -1,5 +1,5 @@
 """FastAPI application for AutoCV."""
-import os
+
 from typing import Annotated, Optional
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
